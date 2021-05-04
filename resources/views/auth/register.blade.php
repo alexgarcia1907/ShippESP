@@ -61,6 +61,19 @@
                             </div>
                         </div>
 
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="exampleRadios1" checked value="2">
+                            <label class="form-check-label" for="exampleRadios1">
+                            Transportista                               
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="exampleRadios1" value="3">
+                            <label class="form-check-label" for="exampleRadios1">
+                            Empresa                               
+                            </label>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
