@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/user', function(){
+    return ["users" => User::all(), "rols" => Role::all()];
+    //return User::all();
+});
+
+Route::get('/user/{id}/delete' , function($id,Request $request){
+    User::destroy($id);
+    return redirect()->action('App\Http\Controllers\UserController@index');
 });

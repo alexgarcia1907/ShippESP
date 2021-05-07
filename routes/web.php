@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
+Route::resource('users',\App\Http\Controllers\UserController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('admin' , [App\Http\Controllers\HomeController::class, 'admin']);
+
+Route::get('/download', function () {
+    $users = User::all();
+    return response()->xml(['users' => $users->toArray()]);
+});

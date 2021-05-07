@@ -11,21 +11,35 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/dashboard.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
+    <!-- Links -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}" rel="stylesheet">
+
+    <!-- Links -->
+    <script src="https://kit.fontawesome.com/8f497d50ac.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div id="app">
-    @include('layouts.navbar')
+@include('layouts.navbar')
 
-        <main class="py-4">
+<!-- Bootstrap row -->
+<div class="row" id="body-row">
+    
+    @include('layouts.sidebar')
+    <div class="col">
+
+        <main>
             @yield('content')
         </main>
     </div>
+</div>
 </body>
 </html>
