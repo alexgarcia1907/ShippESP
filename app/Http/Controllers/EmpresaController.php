@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Role;
+use App\Models\Oferta;
+use App\Models\Comunidade;
+use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class EmpresaController extends Controller
 {
 
     /**
@@ -14,9 +15,9 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'empresa']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index', array('users' => $users));
+        $comunidades = Comunidade::all();
+        return view('empresa.index' , array('comunidades' => $comunidades));
     }
 
     /**
@@ -35,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -46,7 +47,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $oferta = new Oferta;
+        $validated = $this->validateOferta($request);
+        $oferta->desc = $request["desc"];
+        $oferta->empresa_id = Auth::user()->id;
+
+        dd($oferta);
     }
 
     /**
@@ -68,9 +74,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::all();
-        $user = User::findOrFail($id);
-        return view('user.edit', ['user' => $user, 'roles' => $roles]);
+        //
     }
 
     /**
@@ -82,16 +86,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $this->validateUser($request);
-
-        $user = User::findOrFail($id);
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->role_id = $request->input('role');
-        $user->save();
-
-        return redirect()->action('App\Http\Controllers\UserController@index');
+        //
     }
 
     /**
@@ -105,17 +100,10 @@ class UserController extends Controller
         //
     }
 
-     /**
-     * Valitade User Camps
-     *
-     * @param Request $request
-     */
-     public function validateUser(Request $request)
-     {
-         return $validated = $request->validate([
-             "name" => "required",
-             "email" => ["required","email"],
-             "role" => "required",
-         ]);
-     }
+    public function validateOferta(Request $request)
+    {
+        return $validated = $request->validate([
+            "desc" => "required"
+        ]);
+    }
 }

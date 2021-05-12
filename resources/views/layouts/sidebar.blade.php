@@ -14,7 +14,8 @@
                     <span class="menu-collapsed">{{ __('Inici') }}</span>
                 </div>
             </a>
-
+        @auth
+            @if (\Auth::user()->role->desc == 'admin')
             <a href="{{action('App\Http\Controllers\UserController@index')}}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-user fa-fw mr-3"></span>
@@ -22,13 +23,37 @@
                 </div>
             </a>
 
+            @elseif (\Auth::user()->role->desc == 'empresa')
+            <a href="{{action('App\Http\Controllers\EmpresaController@index')}}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-shipping-fast fa-fw mr-3"></span>
+                    <span class="menu-collapsed mr-1">{{ __('Ofertas') }}</span><span class="badge badge-light"></span>
+                </div>
+            </a>
+            @endif
+        
+
             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                
             </li>
+
+            <div>
+                
+                <a class="list-group-item list-group-item-action d-flex align-items-center" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <span id="collapse-icon" class="fa fa-sign-out-alt mr-3"></span>
+                    {{ __('Salir') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        @endauth
             <a href="#" data-toggle="sidebar-colapse" class="list-group-item list-group-item-action d-flex align-items-center">
                 <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span id="collapse-icon" class="fa fa-2x mr-3"></span>
-                    <span id="collapse-text" class="menu-collapsed">{{ __('Minimitza') }}</span>
+                    <span id="collapse-icon" class="fa fa-angle-double-left mr-3"></span>
+                    <span id="collapse-text" class="menu-collapsed">{{ __('Minimiza') }}</span>
                 </div>
             </a>
             <!-- Logo -->

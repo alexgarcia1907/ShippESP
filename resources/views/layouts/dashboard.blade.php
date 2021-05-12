@@ -25,6 +25,7 @@
 
     <!-- Links -->
     <script src="https://kit.fontawesome.com/8f497d50ac.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -32,7 +33,7 @@
 
 <!-- Bootstrap row -->
 <div class="row" id="body-row">
-    
+
     @include('layouts.sidebar')
     <div class="col">
 
@@ -40,6 +41,8 @@
             @yield('content')
         </main>
     </div>
+
 </div>
 </body>
+
 </html>

@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
             'email' => 'alex@alex.com',
             'password' => '1234',
             'role_id' => 1
-		));
+		)
+    );
 
     /**
      * Run the database seeds.
