@@ -21,5 +21,6 @@ $(function () {
         }
 
         $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+
     }
 });

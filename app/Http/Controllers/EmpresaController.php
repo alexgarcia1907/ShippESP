@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Oferta;
+use App\Models\User;
 use App\Models\Comunidade;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,13 @@ class EmpresaController extends Controller
         return view('empresa.index' , array('comunidades' => $comunidades));
     }
 
+    public function showOfertas()
+    {
+        dd(Auth::user()->id);
+        $ofertas = Oferta::where('empresa_id' , Auth::user()->id)->get();
+        dd($ofertas);
+        return view('empresa.ofertas' , array('ofertas' => $ofertas));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -49,10 +57,14 @@ class EmpresaController extends Controller
     {
         $oferta = new Oferta;
         $validated = $this->validateOferta($request);
-        $oferta->desc = $request["desc"];
+
+        $oferta->desc = $validated["desc"];
+        $oferta->origen_id = $validated["calle"];
+        $oferta->destino_id = $validated["calledest"];
         $oferta->empresa_id = Auth::user()->id;
 
-        dd($oferta);
+        $oferta->save();
+        return redirect('/empresa');
     }
 
     /**
@@ -63,7 +75,11 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail(Auth::id());
+        $ofertas = $user->ofertasempresa;
+
+        return view('empresa.ofertas' , array('ofertas' => $ofertas));
+        dd($ofertas);
     }
 
     /**
@@ -103,7 +119,21 @@ class EmpresaController extends Controller
     public function validateOferta(Request $request)
     {
         return $validated = $request->validate([
-            "desc" => "required"
+            "desc" => "required",
+            "comunidad" => "required",
+            "comunidaddest" => "required",
+            "provincia" => "required",
+            "provinciadest" => "required",
+            "municipio" => "required",
+            "municipiodest" => "required",
+            "poblacion" => "required",
+            "poblaciondest" => "required",
+            "cpostal" => "required",
+            "cpostaldest" => "required",
+            "calle" => "required",
+            "calledest" => "required",
+            "calle" => "required",
+            "calledest" => "required"
         ]);
     }
 }

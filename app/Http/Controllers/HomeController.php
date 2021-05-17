@@ -29,4 +29,8 @@ class HomeController extends Controller
     public function admin(){
         return view('admin.index');
     }
+
+    public function avisolegal(){
+        return view('legal.aviso');
+    }
 }

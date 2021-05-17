@@ -49,8 +49,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function ofertas()
+    public function ofertasempresa()
     {
-        return $this->hasMany(Oferta::class);
+        return $this->hasMany(Oferta::class, 'empresa_id','id');
     }
 }

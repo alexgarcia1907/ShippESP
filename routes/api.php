@@ -35,27 +35,32 @@ Route::get('/user/{id}/delete' , function($id,Request $request){
     return redirect()->action('App\Http\Controllers\UserController@index');
 });
 
-Route::get('/comunidad/{id}/provincias', function($id){
-    return view('location.provincias',["provincias" => Provincia::where('CCOM',$id)->get()]);
+Route::get('/comunidad/{id}/provincias', function($id, Request $request){
+    $param = $request->id;
+    return view('location.provincias',["provincias" => Provincia::where('CCOM',$id)->get(), "param" => $param]);
 });
 
-Route::get('/provincia/{id}/municipios', function($id){
-    return view('location.municipios',["municipios" => Municipio::where('CPRO',$id)->get()]);
+Route::get('/provincia/{id}/municipios', function($id, Request $request){
+    $param = $request->id;
+    return view('location.municipios',["municipios" => Municipio::where('CPRO',$id)->get(), "param" => $param]);
 });
 
-Route::get('/municipio/{id}/poblaciones', function($id){
+Route::get('/municipio/{id}/poblaciones', function($id, Request $request){
+    $param = $request->id;
 
     $idmin = ($id * 10000000);
     $idmax = ($id * 10000000) + 9999999;
-    return view('location.poblaciones',["poblaciones" => Poblacione::where("CPOB", ">=" , $idmin)->where('CPOB', '<=', $idmax)->get()]);
+    return view('location.poblaciones',["poblaciones" => Poblacione::where("CPOB", ">=" , $idmin)->where('CPOB', '<=', $idmax)->get(), "param" => $param]);
 });
 
-Route::get('/poblacion/{id}/cpostales', function($id){
+Route::get('/poblacion/{id}/cpostales', function($id, Request $request){
+    $param = $request->id;
 
-    return view('location.cpostals',["cpostales" => Cpostale::where("CPOB",$id)->get()]);
+    return view('location.cpostals',["cpostales" => Cpostale::where("CPOB",$id)->get(), "param" => $param]);
 });
 
-Route::get('/cpostal/{id}/calles', function($id){
+Route::get('/cpostal/{id}/calles', function($id, Request $request){
+    $param = $request->id;
 
-    return view('location.calles',["calles" => Calle::where("IDPostal",$id)->get()]);
+    return view('location.calles',["calles" => Calle::where("IDPostal",$id)->get(), "param" => $param]);
 });

@@ -20,4 +20,14 @@ class Oferta extends Model
         return $this->belongsTo(User::class, 'repartidor_id' , 'id');
     }
 
+    public function calledestino()
+    {
+        return $this->belongsTo(Calle::class, 'destino_id' , 'id');
+    }
+
+    public function calleorigen()
+    {
+        return $this->belongsTo(Calle::class, 'origen_id' , 'id');
+    }
+
 }
