@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Calle extends Model
 {
     use HasFactory;
+
+
+    public function cpostal()
+    {
+        return $this->belongsTo(Cpostale::class, 'IDPostal' , 'Id');
+    }
 }

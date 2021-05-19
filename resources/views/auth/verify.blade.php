@@ -1,24 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+<div class="container central">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+            <div class="card verificas">
+                <div class="card-header">{{ __('Verifica el teu correu electrònic') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ __('Enviat un nou enllaç de verificació a la vostra adreça de correu electrònic.') }}
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+                    {{ __('Abans de continuar, consulteu el vostre correu electrònic per obtenir un enllaç de verificació.') }}
+                    {{ __('Si no heu rebut el correu electrònic') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline ver">{{ __('tornar a enviar correu de verificació') }}</button>.
                     </form>
                 </div>
             </div>

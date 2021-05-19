@@ -24,12 +24,16 @@ Route::resource('users',\App\Http\Controllers\UserController::class);
 Route::resource('empresa',\App\Http\Controllers\EmpresaController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cookies', 'App\Http\Controllers\HomeController@Cookies');
+Route::get('/politica-de-cookies', 'App\Http\Controllers\HomeController@cookies');
 Route::get('/aviso-legal', 'App\Http\Controllers\HomeController@avisolegal');
 Route::get('/politica-de-privacidad', 'App\Http\Controllers\HomeController@politicaprivacidad');
 
 Route::get('admin' , [App\Http\Controllers\HomeController::class, 'admin']);
 Route::get('/ofertas', [App\Http\Controllers\AdminController::class, 'getOfertas']);
+Route::get('/ofertas/disponibles', [App\Http\Controllers\RepartidorController::class, 'ofertasDisponibles']);
+
+Route::get('login/google', 'App\Http\Controllers\socialLogin@redirectGoogle');
+Route::get('login/google/callback', 'App\Http\Controllers\socialLogin@CallbackGoogle');
 
 Route::get('/download', function () {
     $users = User::all();

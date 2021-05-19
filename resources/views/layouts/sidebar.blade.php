@@ -9,7 +9,7 @@
             </li>
             <!-- /END Separator -->
 
-            <a class="list-group-item list-group-item-action">
+            <a href="/" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-home fa-fw mr-3"></span>
                     <span class="menu-collapsed">{{ __('Inicio') }}</span>
@@ -43,6 +43,15 @@
                     <span class="menu-collapsed mr-1">{{ __('Mis Ofertas') }} <span class="badge badge-light"> {{$numofertas}} </span> </span>
                 </div>
             </a>
+            @elseif (\Auth::user()->role->desc == 'repartidor')
+            <li>
+                <a href="/ofertas/disponibles" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-dolly-flatbed fa-fw mr-3"></span>
+                        <span class="menu-collapsed mr-1">{{ __('Ofertas Disponibles') }} <span class="badge badge-light"> {{$numofertasdisponibles}}</span> </span>
+                    </div>
+                </a>
+            </li>
             @endif
         
 

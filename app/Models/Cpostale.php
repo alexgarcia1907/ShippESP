@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cpostale extends Model
 {
     use HasFactory;
+
+    public function poblacion()
+    {
+        return $this->belongsTo(Poblacione::class, 'CPOB' , 'CPOB');
+    }
 }

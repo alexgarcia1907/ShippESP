@@ -33,4 +33,13 @@ class HomeController extends Controller
     public function avisolegal(){
         return view('legal.aviso');
     }
+
+    public function politicaprivacidad(){
+        return view('legal.politicaprivacidad');
+    }
+
+    public function cookies(){
+        return view('legal.cookies');
+    }
+
 }
