@@ -8,6 +8,7 @@
 <option disabled selected value="">Selecciona...</option>
         @foreach($provincias as $provincia)
             <option value="{{$provincia->CPRO}}">{{ $provincia->PRO }}</option>
-            @endforeach   
+            @endforeach  
+            
     </select>
 </div>
