@@ -55,6 +55,7 @@ Route::get('/municipio/{id}/poblaciones', function($id, Request $request){
 
 Route::get('/poblacion/{id}/cpostales', function($id, Request $request){
     $param = $request->id;
+    
     return view('location.cpostals',["cpostales" => Cpostale::where("CPOB",$id)->get(), "param" => $param]);
 });
 
