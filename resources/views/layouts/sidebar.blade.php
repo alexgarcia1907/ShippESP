@@ -9,14 +9,14 @@
             </li>
             <!-- /END Separator -->
 
-            <a href="/" class="list-group-item list-group-item-action">
+        @auth
+            @if (\Auth::user()->role->desc == 'admin')
+            <a href="/admin" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-home fa-fw mr-3"></span>
                     <span class="menu-collapsed">{{ __('Inicio') }}</span>
                 </div>
             </a>
-        @auth
-            @if (\Auth::user()->role->desc == 'admin')
             <a href="{{action('App\Http\Controllers\UserController@index')}}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-user fa-fw mr-3"></span>

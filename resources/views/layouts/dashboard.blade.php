@@ -37,6 +37,7 @@
 <div class="row" id="body-row">
 
     @include('layouts.sidebar')
+
     <div class="col">
 
         <main>

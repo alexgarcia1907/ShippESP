@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Socialite;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class socialLogin extends Controller
 {
@@ -17,23 +21,19 @@ class socialLogin extends Controller
 
             if($finduser){
                 Auth::login($finduser);
-                return redirect('/');
+                return redirect('/ofertas/disponibles');
 
             }else{
                 
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'password' => null
-                ]);
-                $newProvider = Provider::create([
-                    'provider_name' => 'google',
-                    'provider_token' => $user->token,
-                    'user_id'=> $newUser->id
+                    'password' => Hash::make('1234'),
+                    'role_id' => 2,
                 ]);
       
                 Auth::login($newUser);
-                return redirect('/');
+                return redirect('/ofertas/disponibles');
             }
       
         } catch (Exception $e) {

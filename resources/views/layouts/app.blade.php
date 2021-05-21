@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8f497d50ac.js" crossorigin="anonymous"></script>
 
 </head>
@@ -28,5 +29,7 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.footer')
+    <script src="{{ asset('js/portada.js') }}" defer></script>
 </body>
 </html>

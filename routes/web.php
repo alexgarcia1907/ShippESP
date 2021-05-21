@@ -17,7 +17,7 @@ use App\Models\Oferta;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Auth::routes();
 Route::resource('users',\App\Http\Controllers\UserController::class);
@@ -28,8 +28,8 @@ Route::get('/politica-de-cookies', 'App\Http\Controllers\HomeController@cookies'
 Route::get('/aviso-legal', 'App\Http\Controllers\HomeController@avisolegal');
 Route::get('/politica-de-privacidad', 'App\Http\Controllers\HomeController@politicaprivacidad');
 
-Route::get('admin' , [App\Http\Controllers\HomeController::class, 'admin']);
-Route::get('/ofertas', [App\Http\Controllers\AdminController::class, 'getOfertas']);
+Route::get('admin' , [App\Http\Controllers\HomeController::class, 'admin'])->middleware('admin');
+Route::get('/ofertas', [App\Http\Controllers\AdminController::class, 'getOfertas'])->middleware('admin');
 Route::get('/ofertas/disponibles', [App\Http\Controllers\RepartidorController::class, 'ofertasDisponibles']);
 
 Route::get('login/google', 'App\Http\Controllers\socialLogin@redirectGoogle');

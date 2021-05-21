@@ -5,7 +5,7 @@
 <div class="container central">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card login">
+            <div class="card login" style="margin-bottom:100px">
                 <div class="card-header">{{ __('Entra') }}</div>
 
                 <div class="card-body">

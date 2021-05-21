@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md text-white shadow-sm" style="background-color:#263238 !important;">
+<nav class="navbar @if(\Route::current()->getName() == 'home') fixed-top @endif navbar-expand-md text-white shadow-sm" style="background-color:#263238 !important;">
     <div class="container">
         <a class="navbar-brand py-3" href="{{ url('/') }}" style="color:white;">
             <img src="/img/logo.svg" alt="Web Logo" height="30">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
+        <button style="color:white!important;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <i style="color:white!important;" class="fa fa-bars"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,7 +19,7 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('login') }}" style="color:white;">{{ __('Inicar sesión') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}" style="color:white;">{{ __('Iniciar sesión') }}</a>
                         </li>
                     @endif
 
@@ -31,9 +31,9 @@
                 @else
                     <li class="nav-item dropdown">
                         <a style="color:white;" class="nav-link" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Usuario: {{ Auth::user()->name }}
+                           <span style="text-transform:capitalize;">Usuario: {{ Auth::user()->name }}</span> 
                             <br>
-                            Rol: {{Auth::user()->role->desc}}
+                           <span style="text-transform:capitalize;">Rol: {{Auth::user()->role->desc}}</span>
                         </a>
                     </li>
                 @endguest
