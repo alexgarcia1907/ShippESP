@@ -106,7 +106,6 @@ section::after {
 .icon{
   transition: 0.5s;
 }
-
 .icon:hover{
   transform: scale(1.2);
   transition: 0.5s;
