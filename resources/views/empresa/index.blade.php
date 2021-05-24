@@ -53,9 +53,13 @@
                                     <div id="showcp" class="form-group align-items-center row">
                                         
                                     </div>
-                                    <div id="showcalles" class="form-group align-items-center row">
+                                    <div id="showcalles" onchange="CallAPIO()" class="form-group align-items-center row">
                                         
                                     </div>
+                                    <select name="latO" id="showlat" class="custom-select w-75 d-none"></select>
+                                    <select name="lonO" id="showlon" class="custom-select w-75 d-none"></select>
+                                
+                                
                                 </div>
                                 <!--  Escoger destino  -->
                                 <div class="col-6">
@@ -84,9 +88,11 @@
                                     <div id="showcpdest" class="form-group align-items-center row">
                                         
                                     </div>
-                                    <div id="showcallesdest" class="form-group align-items-center row">
+                                    <div id="showcallesdest" onchange="CallAPID()" class="form-group align-items-center row">
                                         
                                     </div>
+                                    <select name="latD" id="showlatdest" class="custom-select w-75 d-none"></select>
+                                    <select name="lonD" id="showlondest" class="custom-select w-75 d-none"></select>
                                 </div>
                             </div>
                             
@@ -103,4 +109,42 @@
     </div>
 </div>
 <script src="{{ asset('js/locations.js')}}"></script>    
+<script>
+function PadLeft(value, length) {
+        return (value.toString().length < length) ? PadLeft("0" + value, length) : 
+        value;
+    }
+function CallAPIO() {
+    $('#showlatdest').empty();
+    $('#showlondest').empty();
+    cp=PadLeft($( "#showcp option:selected" ).text(),5);   
+    $.ajax({
+        url: 'https://eu1.locationiq.com/v1/search.php?key=pk.1911a14cab97bc9aabfc6d08d0100b78&street='+$( "#showcalles option:selected" ).text()+'&city='+$( "#showpob option:selected" ).text()+'&country=Espa%C3%B1a&postalcode='+cp+'&format=json',
+        method: 'GET',
+        type: 'JSON'
+    }).done(function(origen) {
+        $('#showlat').append($('<option> selected', {value:origen[0].lat, text:origen[0].lat}));
+        $('#showlon').append($('<option> selected', {value:origen[0].lon, text:origen[0].lon}));
+    }).fail(function(origen){
+        $('#showlat').append($('<option> selected', {value:"0", text:"0"}));
+        $('#showlon').append($('<option> selected', {value:"0", text:"0"}));
+    });
+}
+function CallAPID() {
+    $('#showlatdest').empty();
+    $('#showlondest').empty();
+    cp=PadLeft($( "#showcpdest option:selected" ).text(),5);
+    $.ajax({
+        url: 'https://eu1.locationiq.com/v1/search.php?key=pk.1911a14cab97bc9aabfc6d08d0100b78&street='+$( "#showcallesdest option:selected" ).text()+'&city='+$( "#showpobdest option:selected" ).text()+'&country=Espa%C3%B1a&postalcode='+cp+'&format=json',
+        method: 'GET',
+        type: 'JSON'
+    }).done(function(origen) {
+        $('#showlatdest').append($('<option> selected', {value:origen[0].lat, text:origen[0].lat}));
+        $('#showlondest').append($('<option> selected', {value:origen[0].lon, text:origen[0].lon}));
+    }).fail(function(origen){
+        $('#showlatdest').append($('<option> selected', {value:"0", text:"0"}));
+        $('#showlondest').append($('<option> selected', {value:"0", text:"0"}));
+    });
+}
+</script>
 @endsection

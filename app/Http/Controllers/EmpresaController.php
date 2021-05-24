@@ -61,6 +61,10 @@ class EmpresaController extends Controller
         $oferta->desc = $validated["desc"];
         $oferta->origen_id = $validated["calle"];
         $oferta->destino_id = $validated["calledest"];
+        $oferta->lonD = $validated["lonD"];
+        $oferta->latD = $validated["latD"];
+        $oferta->lonO = $validated["lonO"];
+        $oferta->latO = $validated["latO"];
         $oferta->empresa_id = Auth::user()->id;
 
         $oferta->save();
@@ -133,7 +137,11 @@ class EmpresaController extends Controller
             "calle" => "required",
             "calledest" => "required",
             "calle" => "required",
-            "calledest" => "required"
+            "calledest" => "required",
+            "latO" => "required",
+            "lonO" => "required",
+            "latD" => "required",
+            "lonD" => "required"
         ]);
     }
 }
