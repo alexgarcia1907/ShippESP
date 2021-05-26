@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'empresa' => \App\Http\Middleware\isEmpresa::class,
         'repartidor' => \App\Http\Middleware\IsRepartidor::class,
+        'xml' => \Bmatovu\LaravelXml\Http\Middleware\RequireXml::class,
     ];
 }

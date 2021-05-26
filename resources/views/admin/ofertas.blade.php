@@ -10,17 +10,10 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container mb-4">
     <div class="row">
         <div class="col">
             <div class="card text-center m-0">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="true" href="#">Ofertas</a>
-                        </li>
-                    </ul>
-                </div>
                 <div class="card-body">  
                 <table class="table table-striped" id="tableofertas">
                         <thead>

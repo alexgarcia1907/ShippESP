@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class socialLogin extends Controller
 {
+
+    /**
+     * Funciones para el OAuth de Google.
+     *
+     * @return void
+     */
     public function redirectGoogle(){
         return Socialite::driver('google')->redirect();
     }

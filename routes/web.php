@@ -38,12 +38,18 @@ Route::get('/oferta/{id}/entregada', [App\Http\Controllers\RepartidorController:
 Route::get('login/google', 'App\Http\Controllers\socialLogin@redirectGoogle');
 Route::get('login/google/callback', 'App\Http\Controllers\socialLogin@CallbackGoogle');
 
-Route::get('/download', function () {
+/**
+ * Ruta con funcion anónima para descargar usuarios en XML.(La libreria no permite redirigir a un controlador.)
+ */
+Route::get('/download/users', function () {
     $users = User::all();
     return response()->xml(['users' => $users->toArray()]);
-});
+})->middleware('admin');
 
+/**
+ * Ruta con funcion anónima para descargar ofertas en XML.(La libreria no permite redirigir a un controlador.)
+ */
 Route::get('/download/ofertas', function () {
     $ofertas = Oferta::all();
     return response()->xml(['ofertas' => $ofertas->toArray()]);
-});
+})->middleware('admin');

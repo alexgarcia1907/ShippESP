@@ -26,41 +26,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/user', function(){
-    return ["users" => User::all(), "rols" => Role::all()];
-});
-
-Route::get('/user/{id}/delete' , function($id,Request $request){
-    User::destroy($id);
-    return redirect()->action('App\Http\Controllers\UserController@index');
-});
-
-Route::get('/comunidad/{id}/provincias', function($id, Request $request){
-    $param = $request->id;
-    return view('location.provincias',["provincias" => Provincia::where('CCOM',$id)->get(), "param" => $param]);
-});
-
-Route::get('/provincia/{id}/municipios', function($id, Request $request){
-    $param = $request->id;
-    return view('location.municipios',["municipios" => Municipio::where('CPRO',$id)->get(), "param" => $param]);
-});
-
-Route::get('/municipio/{id}/poblaciones', function($id, Request $request){
-    $param = $request->id;
-
-    $idmin = ($id * 10000000);
-    $idmax = ($id * 10000000) + 9999999;
-    return view('location.poblaciones',["poblaciones" => Poblacione::where("CPOB", ">=" , $idmin)->where('CPOB', '<=', $idmax)->get(), "param" => $param]);
-});
-
-Route::get('/poblacion/{id}/cpostales', function($id, Request $request){
-    $param = $request->id;
-    
-    return view('location.cpostals',["cpostales" => Cpostale::where("CPOB",$id)->get(), "param" => $param]);
-});
-
-Route::get('/cpostal/{id}/calles', function($id, Request $request){
-    $param = $request->id;
-
-    return view('location.calles',["calles" => Calle::where("IDPostal",$id)->get(), "param" => $param]);
-});
+Route::get('/user', 'App\Http\Controllers\ApiController@getUsers');
+Route::get('/user/{id}/delete' , 'App\Http\Controllers\ApiController@deleteUser');
+Route::get('/comunidad/{id}/provincias', 'App\Http\Controllers\ApiController@getProvincias');
+Route::get('/provincia/{id}/municipios', 'App\Http\Controllers\ApiController@getMunicipios');
+Route::get('/municipio/{id}/poblaciones', 'App\Http\Controllers\ApiController@getPoblaciones');
+Route::get('/poblacion/{id}/cpostales', 'App\Http\Controllers\ApiController@getPostales');
+Route::get('/cpostal/{id}/calles', 'App\Http\Controllers\ApiController@getCalles');

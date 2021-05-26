@@ -30,13 +30,6 @@ class EmpresaController extends Controller
         return view('empresa.index' , array('comunidades' => $comunidades));
     }
 
-    public function showOfertas()
-    {
-        dd(Auth::user()->id);
-        $ofertas = Oferta::where('empresa_id' , Auth::user()->id)->get();
-        dd($ofertas);
-        return view('empresa.ofertas' , array('ofertas' => $ofertas));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -119,6 +112,12 @@ class EmpresaController extends Controller
         //
     }
 
+    /**
+     * Validador de formulario
+     *
+     * @param Request $request
+     * @return void
+     */
     public function validateOferta(Request $request)
     {
         return $validated = $request->validate([

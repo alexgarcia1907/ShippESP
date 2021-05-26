@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             
-            <h1 class="border-dark border-bottom pb-3 my-4">Gestión de usuarios <a class="btn btn-secondary float-right" download="Usuarios.xml" href="/download"><i class="fa fa-download"> </i> Descargar Usuarios</a></h1>  
+            <h1 class="border-dark border-bottom pb-3 my-4">Gestión de usuarios <a class="btn btn-secondary float-right" download="Usuarios.xml" href="/download/users"><i class="fa fa-download"> </i> Descargar Usuarios</a></h1>  
         </div>
     </div>
 </div>

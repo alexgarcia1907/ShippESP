@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth' ,['except' => ['avisolegal','politicaprivacidad','cookies']]);
     }
 
     /**
@@ -30,6 +30,11 @@ class HomeController extends Controller
         return view('admin.index');
     }
 
+    /**
+     * Funciones para las paginas legales del footer
+     *
+     * @return void
+     */
     public function avisolegal(){
         return view('legal.aviso');
     }

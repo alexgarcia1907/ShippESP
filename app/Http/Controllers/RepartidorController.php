@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RepartidorController extends Controller
 {
+    /**
+     * Funcion que devuelve las ofertas disponibles para mostrar al repartidor.
+     *
+     * @return void
+     */
     public function ofertasDisponibles(){
 
         $ofertasdisponibles = Oferta::where('estado', 'pendiente')->get();
@@ -17,6 +22,12 @@ class RepartidorController extends Controller
         return view('repartidor.ofertasdisponibles' , array("ofertasdispo" => $ofertasdisponibles));
     }
 
+    /**
+     * Funcion que se ejcuta al aceptar una oferta como repartidor.
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function aceptarOferta($id){
 
         $oferta = Oferta::findOrFail($id);
@@ -27,6 +38,12 @@ class RepartidorController extends Controller
         return redirect('/ofertas/disponibles');
     }
 
+    /**
+     * Funcion que muestra las ofertas del repartidor.
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function show($id)
     {
         $user = User::findOrFail(Auth::id());
@@ -35,6 +52,12 @@ class RepartidorController extends Controller
         return view('repartidor.ofertasasignadas' , array('ofertas' => $ofertas));
     } 
 
+    /**
+     * Funcion que se ejecuta al pasar una oferta a entregada.
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function entregarOferta($id){
         $oferta = Oferta::findOrFail($id);
         $oferta->estado = 'entregado';
