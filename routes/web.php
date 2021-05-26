@@ -30,7 +30,10 @@ Route::get('/politica-de-privacidad', 'App\Http\Controllers\HomeController@polit
 
 Route::get('admin' , [App\Http\Controllers\HomeController::class, 'admin'])->middleware('admin');
 Route::get('/ofertas', [App\Http\Controllers\AdminController::class, 'getOfertas'])->middleware('admin');
-Route::get('/ofertas/disponibles', [App\Http\Controllers\RepartidorController::class, 'ofertasDisponibles']);
+Route::get('/ofertas/disponibles', [App\Http\Controllers\RepartidorController::class, 'ofertasDisponibles'])->middleware('repartidor');
+Route::get('/repartidor/{id}', [App\Http\Controllers\RepartidorController::class, 'show'])->middleware('repartidor');
+Route::get('/repartidor/aceptaroferta/{id}', [App\Http\Controllers\RepartidorController::class, 'aceptarOferta'])->middleware('repartidor');
+Route::get('/oferta/{id}/entregada', [App\Http\Controllers\RepartidorController::class, 'entregarOferta'])->middleware('repartidor');
 
 Route::get('login/google', 'App\Http\Controllers\socialLogin@redirectGoogle');
 Route::get('login/google/callback', 'App\Http\Controllers\socialLogin@CallbackGoogle');

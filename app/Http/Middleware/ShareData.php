@@ -27,6 +27,11 @@ class ShareData
             $numofertas =  Oferta::where('empresa_id' , Auth::user()->id)->count();
             view()->share('numofertas' , $numofertas);
         }
+
+        if(Auth::check() && Auth::user()->role->desc == 'repartidor') {
+            $numofertas =  Oferta::where('repartidor_id' , Auth::user()->id)->count();
+            view()->share('numofertas' , $numofertas);
+        }
         
         view()->share('numofertasadmin' , $numofertasadmin);
         view()->share('numusers', $numusers);

@@ -3,7 +3,8 @@
 @section('content')
 <script>
     function GenerarMapa(Olat,Olong,Dlat,Dlong,Nmap) {
-        var map = L.map("map"+Nmap).
+        for(let i = 0; i < 3; i++){
+            var map = L.map("map"+Nmap+"_"+i).
             setView([40.42, -3.00],
             5);
             
@@ -25,6 +26,7 @@
         $('#km'+Nmap).text(Math.trunc(summary.totalDistance / 1000)+" KM");
         $('#horas'+Nmap).text(Math.round(summary.totalTime / 3600)+" Horas");
         });
+        }
     }
 </script>
 <div class="container">
@@ -46,7 +48,7 @@
                 <div class="blog-slider mt-4 mb-4">
                     <div class="blog-slider__wrp swiper-wrapper">
                         <div class="blog-slider__item swiper-slide">
-                            <div class="blog-slider__img" id="map{{$oferta->id}}"></div>
+                            <div class="blog-slider__img" id="map{{$oferta->id}}_0"></div>
                             <div class="blog-slider__content">
                                 <span class="blog-slider__code">{{$oferta->created_at->format('d F Y')}}</span>
                                 <div class="blog-slider__title">
@@ -55,27 +57,27 @@
                                     <h6 id="horas{{$oferta->id}}"></h6>
                                 </div>
                                 <div class="blog-slider__text">{{$oferta->desc}} </div>
-                                <a href="#" class="blog-slider__button">ACEPTAR</a>
+                                <a href="/repartidor/aceptaroferta/{{$oferta->id}}" class="blog-slider__button">ACEPTAR</a>
                             </div>
                         </div>
                         <div class="blog-slider__item swiper-slide">
-                            <div class="blog-slider__img" id="map{{$oferta->id}}"></div>
+                            <div class="blog-slider__img" id="map{{$oferta->id}}_1"></div>
                             <div class="blog-slider__content">
                                 <span class="blog-slider__code">{{$oferta->created_at->format('d F Y')}}</span>
                                 <div class="blog-slider__title">Origen</div>
                                 <div class="blog-slider__text">{{substr($calle->TVIA,0, 1)}}/ {{$calle->NVIA}} , {{$calle->cpostal->CP}} , {{$calle->cpostal->poblacion->NENTSI50}}</div>
 
-                                <a href="#" class="blog-slider__button">ACEPTAR</a>
+                                <a href="/repartidor/aceptaroferta/{{$oferta->id}}" class="blog-slider__button">ACEPTAR</a>
                             </div>
                         </div>
                         
                         <div class="blog-slider__item swiper-slide">
-                        <div class="blog-slider__img" id="map{{$oferta->id}}"></div>
+                        <div class="blog-slider__img" id="map{{$oferta->id}}_2"></div>
                         <div class="blog-slider__content">
                             <span class="blog-slider__code">{{$oferta->created_at->format('d F Y')}}</span>
                             <div class="blog-slider__title">Destino</div>  
                             <div class="blog-slider__text">{{substr($calledestino->TVIA,0, 1)}}/ {{$calledestino->NVIA}} , {{$calledestino->cpostal->CP}} , {{$calledestino->cpostal->poblacion->NENTSI50}}</div>
-                            <a href="#" class="blog-slider__button">ACEPTAR</a>
+                            <a href="/repartidor/aceptaroferta/{{$oferta->id}}" class="blog-slider__button">ACEPTAR</a>
                         </div>
                         </div>   
                     </div>

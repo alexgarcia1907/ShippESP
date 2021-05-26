@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Oferta::class, 'empresa_id','id');
     }
+
+    public function ofertasrepartidor()
+    {
+        return $this->hasMany(Oferta::class, 'repartidor_id','id');
+    }
 }

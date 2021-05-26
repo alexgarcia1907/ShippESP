@@ -83,7 +83,6 @@ class EmpresaController extends Controller
         $ofertas = $user->ofertasempresa;
 
         return view('empresa.ofertas' , array('ofertas' => $ofertas));
-        dd($ofertas);
     }
 
     /**

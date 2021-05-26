@@ -52,8 +52,15 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="/repartidor/{{\Auth::id()}}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-boxes fa-fw mr-3"></span>
+                        <span class="menu-collapsed mr-1">{{ __('Mis Ofertas') }} <span class="badge badge-light">{{$numofertas}}</span> </span>
+                    </div>
+                </a>
+            </li>
             @endif
-        
 
             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
             </li>
