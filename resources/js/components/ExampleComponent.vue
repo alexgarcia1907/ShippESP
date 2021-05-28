@@ -17,7 +17,6 @@ $(document).ready(function(){
         btns = document.getElementsByClassName("btn-warning");
         btns2 = document.getElementsByClassName("btn-danger");
         for(let i=0 ; i < users.length; i ++){
-            console.log(users[i])
             btns[i].setAttribute('href', '/users/'+ users[i] + '/edit');
             btns2[i].setAttribute('href', '/api/user/'+ users[i] + '/delete');
         }

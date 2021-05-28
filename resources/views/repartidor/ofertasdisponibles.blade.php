@@ -23,8 +23,8 @@
         routeControl.on('routesfound', function(e) {
         var routes = e.routes;
         var summary = routes[0].summary;
-        $('#km'+Nmap).text(Math.trunc(summary.totalDistance / 1000)+" KM");
-        $('#horas'+Nmap).text(Math.round(summary.totalTime / 3600)+" Horas");
+        $('#km'+Nmap).text("Distancia: "+Math.trunc(summary.totalDistance / 1000)+" KM");
+        $('#horas'+Nmap).text("Tiempo: "+Math.round(summary.totalTime / 3600)+" Horas");
         });
         }
     }
@@ -37,9 +37,16 @@
     </div>
 </div>
 
+
 <div class="container pb-4">
     <div class="row ">
-        <div class="col ">
+        @if(sizeof($ofertasdispo) == 0)
+        <div class="col text-center mb-5">
+            <h3>En estos momentos no hay ofertas disponibles.</h3>
+            <h5>Disculpa las molestias.</h5>
+        </div>
+        @else
+        <div class="col "> 
             @foreach($ofertasdispo as $oferta)
             <?php
                 $calle = $oferta->calleorigen;
@@ -86,6 +93,7 @@
                 </div>
                 <script>GenerarMapa("{{$oferta->latO}}","{{$oferta->lonO}}","{{$oferta->latD}}","{{$oferta->lonD}}","{{$oferta->id}}");</script>
             @endforeach
+        @endif
     </div>
 </div>
 

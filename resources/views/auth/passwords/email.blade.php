@@ -2,6 +2,7 @@
 
 @section('content')
 <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+<link href="{{ asset('css/resetpass.css') }}" rel="stylesheet">
 <div class="container central">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -44,5 +45,7 @@
             </div>
         </div>
     </div>
+    <style>
+    </style>
 </div>
 @endsection

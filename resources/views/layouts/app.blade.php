@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/png" sizes="50x50" href="/img/logo-favicon.svg">
     <title>{{ config('app.name', 'ShippESP') }}</title>
 
     <!-- Scripts -->

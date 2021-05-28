@@ -59,11 +59,14 @@ class RepartidorController extends Controller
      * @return void
      */
     public function entregarOferta($id){
+        $user = User::findOrFail(Auth::id());
+
         $oferta = Oferta::findOrFail($id);
         $oferta->estado = 'entregado';
 
         $oferta->save();
-        return redirect('/ofertas/disponibles');
+        
+        return redirect('/repartidor/{id}')->with('id',$user);
     }
 
 

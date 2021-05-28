@@ -4,7 +4,7 @@
             <div class="col text-center">
                     <img class="logofooter" src="/img/logo.svg" alt="">  
                     <div class="info">
-                        <p class="contactosfooter"><i class="fas fa-map-marker-alt"></i> C/Sant Maurici 26 - 17740 Vilafant (Girona) <span class="marginsfooter"><i class="fas fa-envelope"></i><a style="color:white;" href="mailto:aleexgarcia1907@gmail.com?subject=Soporte"> info@alteregoweb.com</a> </span><i class="fas fa-phone"></i> <a style="color:white;" href="https://api.whatsapp.com/send?phone=+34616059458&text=Buenas!">+34 872 98 93 92</a></p>
+                        <p class="contactosfooter"><i class="fas fa-map-marker-alt"></i> <a style="color:white;" href="https://goo.gl/maps/PaYXuSiCtDzryJAMA">C/Escorpí 8 - 17600 Figueres (Girona) </a><span class="marginsfooter"><i class="fas fa-envelope"></i><a style="color:white;" href="mailto:info@shippesp.es?subject=Soporte"> info@shippesp.es</a> </span><i class="fas fa-phone"></i> <a style="color:white;" href="https://api.whatsapp.com/send?phone=+34638732644&text=Buenas!">+34 638 73 26 44</a></p>
                     </div> 
                     <div class="info">
                         <p class="legalesfooter"><a style="color:white;" href="/aviso-legal"> Aviso legal</a><span class="marginsfooter">|</span><a style="color:white;" href="/politica-de-privacidad">Politica de privacidad</a> <span class="marginsfooter">|</span><a style="color:white;" href="/politica-de-cookies">Politica de cookies</a></p>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('content')
 <link href="{{ asset('css/cookies.css') }}" rel="stylesheet">

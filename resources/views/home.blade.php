@@ -12,10 +12,10 @@
             <!-- Slide One - Set the background image for this slide in the line below -->
             <div class="carousel-item active">
               <div class="carousel-caption d-md-block">
-                <h2 class="display-4">Shipp<span style="color: yellow;">ESP</span></h2>
+                <h2 class="display-4">Shipp<span style="color: #EAD017;">ESP</span></h2>
                 <p class="lead">This is a description for the first slide.</p>        
                 <section id="section07" class="demo">
-                  <a id="scrollportada" href="#section08"><span></span><span></span><span></span>Scroll</a>
+                  <a class="scrollportada" href="#section08"><span></span><span></span><span></span>Scroll</a>
               </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
@@ -24,7 +24,7 @@
                 <h2 class="display-4">Shipp<span style="color:#EAD017">ESP</span></h2>
                 <p class="lead">This is a description for the first slide.</p>        
                 <section id="section07" class="demo">
-                  <a id="scrollportada" ><span></span><span></span><span></span>Scroll</a>
+                  <a class="scrollportada" href="#section08"><span></span><span></span><span></span>Scroll</a>
               </div>
             </div>
           </div>

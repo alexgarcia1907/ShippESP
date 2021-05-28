@@ -67,11 +67,11 @@
             
                                 </div>
                                 <br>
-                                <div class="form-group text-center botoedit">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn botoedit">
                                         Editar usuario
                                     </button>
-                                    <a type="submit" class="btn btn-primary bot" href="/users">Atrás</a>
+                                    <a type="submit" class="btn botoedit" href="/users">Atrás</a>
                                 </div>
                             </form>
                          </div>
