@@ -97,8 +97,8 @@
                             </div>
                             
 
-                                <div class="form-group text-center botoedit">
-                                    <button type="submit" class="btn" style="background-color:#EAD017">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn botoedit" style="background-color:#EAD017">
                                         Crear oferta
                                     </button>
                                 </div>
